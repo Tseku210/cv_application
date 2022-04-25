@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;900&display=swap');
+
+#editBody {
+    margin: 50px;
+    min-width: 500px;
+    max-width: 600px;
+    font-family: 'Nunito', Courier, monospace;
+}
+.editForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #8abad3ff;
+    width: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+.editForm > div {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.editForm > div > input, textarea {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    width: auto;
+    font-family: Nunito;
+    font-size: 1rem;
+}
+
+.editForm > div > input:focus, textarea:focus {
+    background-color: #fcf6f5ff;
+    outline: 1px solid black;
+}
+
+button {
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    width: 70px;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #edc2d8ff;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
