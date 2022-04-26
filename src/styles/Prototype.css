@@ -11,19 +11,22 @@
     grid-template-rows: 35mm 262mm;
 }
 
+.decSec {
+    font-style: italic;
+}
+
 .headerPr {
     background-color: #8abad3ff;
     grid-column: span 2;
+    padding: 1rem 2rem;
 }
 
 .rightbarPr {
     background-color: rgb(204, 204, 204);
+    padding: 2rem;
+    overflow-wrap: break-word;
 }
 
 .mainPr {
-    padding: 2rem;
-}
-
-.rightbarPr {
     padding: 2rem;
 }

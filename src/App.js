@@ -12,7 +12,7 @@ class App extends React.Component {
         <Header />
         <div id="body">
           <Edit />
-          <Prototype />
+          {/* <Prototype /> */}
         </div>
       </div>
     )
