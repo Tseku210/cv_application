@@ -1,11 +1,11 @@
-import React from 'react'
-import '../styles/Prototype.css'
-import Exp from './Experience'
+import React from 'react';
+import '../styles/Prototype.css';
+import Exp from './Experience';
+import Edu from './Education';
 
 export default class Prototype extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.obj;
     }
 
     render() {
@@ -26,12 +26,12 @@ export default class Prototype extends React.Component {
                     </div>
                     <div>
                         <h3>Experience</h3>
-                        <Exp obj={this.state.experience[0]}/>
+                        <Exp obj={exp}/>
                     </div>
                     <div>
                         <h3>Education</h3>
                         <hr />
-                        <div className="eduSec"></div>
+                        <Edu obj={edu}/>
                     </div>
                 </div>
                 <div className="rightbarPr">

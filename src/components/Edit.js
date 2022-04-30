@@ -17,7 +17,7 @@ export default class Edit extends React.Component {
                 email: '',
                 desciption: ''
             },
-            experience: [
+            experience: 
                 {
                     id: uniqid(),
                     position: '',
@@ -25,18 +25,16 @@ export default class Edit extends React.Component {
                     city: '',
                     from: '',
                     to: ''
-                }
-            ],
-            education: [
+                },
+            education: 
                 {
                     id: uniqid(),
-                    uniName: '',
+                    univeristy: '',
                     city: '',
                     degree: '',
                     from: '',
                     to: ''
                 }
-            ]
         }
     }
 
@@ -57,15 +55,70 @@ export default class Edit extends React.Component {
         let val = e.target.value;
         this.setState(prev => ({
             ...prev,
-            experience: [{
+            experience: {
                 ...prev.experience,
                 [key]: val
-            }]
+            }
         }))
+        // this.setState((prevState) => {
+        //     const newExperience = prevState.experience((expItem) => {
+        //         if (expItem.id === id) {
+        //             return {}
+        //         }
+        //     })
+        // })
+    }
+
+    handleChangeEducation = (e) => {
+        let key = e.target.name;
+        let val = e.target.value;
+        this.setState((prev => ({
+            ...prev,
+            education: {
+                ...prev.education,
+                [key]: val
+            }
+        })))
+    }
+
+    resetInput = () => {
+        let inpt = document.getElementsByTagName('input');
+        for (let i = 0; i < inpt.length; i++) {
+            inpt[i].value = '';
+        }
     }
 
     handleReset = () => {
-
+        this.resetInput();
+        this.setState({
+            personalInfo: {
+                fname: '',
+                lname: '',
+                title: '',
+                address: '',
+                phoneNumber: '',
+                email: '',
+                desciption: ''
+            },
+            experience: 
+                {
+                    id: uniqid(),
+                    position: '',
+                    company: '',
+                    city: '',
+                    from: '',
+                    to: ''
+                },
+            education: 
+                {
+                    id: uniqid(),
+                    univeristy: '',
+                    city: '',
+                    degree: '',
+                    from: '',
+                    to: ''
+                }
+        })
     }
 
     handleName = (e) => {
@@ -97,10 +150,10 @@ export default class Edit extends React.Component {
                             <input name="fname" placeholder="First Name"type="text" className="editFName" onChange={this.handleName}/>
                             <input name="lname" placeholder="Last Name"type="text" className="editLName" onChange={this.handleName}/>
                             <input name="title" placeholder="Job Title"type="text" className="editTitle" onChange={this.handleInput}/>
-                            <label htmlFor="editImg">
+                            {/* <label htmlFor="editImg">
                                 Photo
                                 <input name="photo" type="file" className="editImage" id="editImg"/>
-                            </label>
+                            </label> */}
                             <input name="address" placeholder="Address"type="text" className="editAddress" onChange={this.handleInput}/>
                             <input name="phoneNumber" placeholder="Phone Number"type="text" className="editNumber" onChange={this.handleInput}/>
                             <input name="email" placeholder="Email"type="mail" className="editMail" onChange={this.handleInput}/>
@@ -113,26 +166,26 @@ export default class Edit extends React.Component {
                             <input name="city" placeholder="City" type="text" className="editCity" onChange={this.handleChangeExperience}/>
                             <input name="from" placeholder="From" type="text" className="editFrom" onChange={this.handleChangeExperience}/>
                             <input name="to" placeholder="To" type="text" className="editTo" onChange={this.handleChangeExperience}/>
-                            <div className="editBtns">
+                            {/* <div className="editBtns">
                                 <button className='editExpDelete' onClick={this.deleteExp}>Delete</button>
                                 <button className="editExpAdd" onClick={this.addExp}>Add</button>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="editEdu">
                             Education
-                            <input name="" placeholder="University" type="text" className="editUni" />
-                            <input name="" placeholder="City" type="text" className="editEduCity" />
-                            <input name="" placeholder="Degree" type="text" className="editEduDegree" />
-                            <input name="" placeholder="Subject" type="text" className="editEduSubject" />
-                            <input name="" placeholder="From" type="text" className="editEduFrom" />
-                            <input name="" placeholder="To" type="text" className="editEduTo" />
-                            <div className="editBtns">
+                            <input onChange={this.handleChangeEducation} name="university" placeholder="University" type="text" className="editUni" />
+                            <input onChange={this.handleChangeEducation} name="city" placeholder="City" type="text" className="editEduCity" />
+                            <input onChange={this.handleChangeEducation} name="degree" placeholder="Degree" type="text" className="editEduDegree" />
+                            <input onChange={this.handleChangeEducation} name="subject" placeholder="Subject" type="text" className="editEduSubject" />
+                            <input onChange={this.handleChangeEducation} name="from" placeholder="From" type="text" className="editEduFrom" />
+                            <input onChange={this.handleChangeEducation} name="to" placeholder="To" type="text" className="editEduTo" />
+                            {/* <div className="editBtns">
                                 <button className='editEduDelete'>Delete</button>
                                 <button className="editEduAdd">Add</button>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="editBtns">
-                            <button onClick={this.handleInput}>Submit</button>
+                            {/* <button onClick={this.handleInput}>Submit</button> */}
                             <button onClick={this.handleReset}>Reset</button>
                         </div>
                     </div>

@@ -1,0 +1,16 @@
+.expWrapper {
+    display: flex;
+    width: 100%;
+}
+.expSec {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+.expLeft {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.expRight {
+    font-size: 1.1rem;
+}

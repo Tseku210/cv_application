@@ -1,0 +1,9 @@
+.eduWrapper {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    font-size: 1.1rem;
+}
+.eduLeft {
+    font-weight: bold;
+}

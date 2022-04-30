@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;900&display=swap');
+
 #bodyPr {
     top: 10px;
     position: sticky;
@@ -9,16 +11,25 @@
     display: grid;
     grid-template-columns: 150mm 60mm;
     grid-template-rows: 35mm 262mm;
+    font-family: 'Nunito';
 }
 
 .decSec {
     font-style: italic;
+    overflow-wrap: break-word;
 }
 
 .headerPr {
     background-color: #8abad3ff;
     grid-column: span 2;
     padding: 1rem 2rem;
+}
+.headerPr > h1 {
+    text-transform: uppercase;
+}
+.headerPr > p {
+    font-size: 1.2rem;
+    font-size: bold;
 }
 
 .rightbarPr {
