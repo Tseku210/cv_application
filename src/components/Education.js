@@ -7,9 +7,9 @@ export default class Edu extends React.Component {
         return (
             <div>
                 <div className="eduWrapper">
-                    <div className="eduLeft">{edu.from} - {edu.to}</div>
+                    <div className="eduLeft">{edu.fromEdu} - {edu.toEdu}</div>
                     <div className="eduRight">
-                        <div className="eduUniv">{edu.university}, {edu.city}</div>
+                        <div className="eduUniv">{edu.university}, {edu.cityEdu}</div>
                         <div className="eduDegree">Degree: {edu.degree}</div>
                         <div className="eduSubj">Subject: {edu.subject}</div>
                     </div>

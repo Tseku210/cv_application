@@ -7,35 +7,86 @@ export default class Edit extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            personalInfo: {
-                fname: '',
-                lname: '',
-                title: '',
-                address: '',
-                phoneNumber: '',
-                email: '',
-                desciption: ''
-            },
-            experience: 
-                {
-                    id: uniqid(),
-                    position: '',
-                    company: '',
-                    city: '',
-                    from: '',
-                    to: ''
+        //localStorage.clear()
+        if (!localStorage.user) {
+
+            this.state = {
+                personalInfo: {
+                    fname: '',
+                    lname: '',
+                    title: '',
+                    address: '',
+                    phoneNumber: '',
+                    email: '',
+                    description: ''
                 },
-            education: 
-                {
-                    id: uniqid(),
-                    univeristy: '',
-                    city: '',
-                    degree: '',
-                    from: '',
-                    to: ''
-                }
+                experience: 
+                    {
+                        id: uniqid(),
+                        position: '',
+                        company: '',
+                        city: '',
+                        from: '',
+                        to: ''
+                    },
+                education: 
+                    {
+                        id: uniqid(),
+                        university: '',
+                        cityEdu: '',
+                        degree: '',
+                        fromEdu: '',
+                        toEdu: ''
+                    }
+            }
+        } else {
+            this.state = JSON.parse(localStorage.getItem('user'));
         }
+        //console.log(JSON.parse(localStorage.getItem('user')));
+    }
+
+    componentDidMount() {
+        console.log("Did mount")
+        this.handleRestore();
+        // for (const key in this.state.personalInfo) {
+        //     console.log(key)
+        //     if (key !== 'description') {
+        //         console.log(document.querySelector(`[name=${key}]`).value)
+        //     }
+            
+        // }
+    }
+
+    handleRestore = () => {
+        for (const key in this.state.personalInfo) {
+            if (key !== 'description') {
+                // console.log(document)
+                let el = document.querySelector(`[name=${key}]`);
+                el.value = this.state.personalInfo[key];
+            } else {
+                let el = document.querySelector(`.editDescription`);
+                //console.log(el.innerHTML)
+                el.innerHTML = this.state.personalInfo[key];
+            }
+        }
+        for (const key in this.state.experience) {
+            if (key !== 'id') {
+                let el = document.querySelector(`[name=${key}]`);
+                el.value = this.state.experience[key];
+            }
+        }
+        for (const key in this.state.education) {
+            if (key !== 'id') {
+                console.log(key)
+                console.log(document.querySelector(`[name=${key}]`))
+                let el = document.querySelector(`[name=${key}]`);
+                el.value = this.state.education[key];
+            }
+        }
+    }
+
+    handleStorage = () => {
+        localStorage.setItem('user', JSON.stringify(this.state));
     }
 
     handleInput = (e) => {
@@ -48,6 +99,7 @@ export default class Edit extends React.Component {
                 [key]: [val]
             }
         }))
+        this.handleStorage();
     }
 
     handleChangeExperience = (e) => {
@@ -60,6 +112,7 @@ export default class Edit extends React.Component {
                 [key]: val
             }
         }))
+        this.handleStorage();
         // this.setState((prevState) => {
         //     const newExperience = prevState.experience((expItem) => {
         //         if (expItem.id === id) {
@@ -79,6 +132,7 @@ export default class Edit extends React.Component {
                 [key]: val
             }
         })))
+        this.handleStorage();
     }
 
     resetInput = () => {
@@ -98,7 +152,7 @@ export default class Edit extends React.Component {
                 address: '',
                 phoneNumber: '',
                 email: '',
-                desciption: ''
+                description: ''
             },
             experience: 
                 {
@@ -113,12 +167,13 @@ export default class Edit extends React.Component {
                 {
                     id: uniqid(),
                     univeristy: '',
-                    city: '',
+                    cityEdu: '',
                     degree: '',
-                    from: '',
-                    to: ''
+                    fromEdu: '',
+                    toEdu: ''
                 }
         })
+        this.handleStorage();
     }
 
     handleName = (e) => {
@@ -130,6 +185,7 @@ export default class Edit extends React.Component {
                 [key]: name
             }
         }))
+        this.handleStorage();
     }
 
     deleteExp = (e) => {
@@ -141,15 +197,16 @@ export default class Edit extends React.Component {
     }
 
     render() {
+        console.log("render")
         return (
             <div>
                 <div id="editBody">
                     <div className="editForm">
                         <div className="editPI">
                             Personal Information
-                            <input name="fname" placeholder="First Name"type="text" className="editFName" onChange={this.handleName}/>
-                            <input name="lname" placeholder="Last Name"type="text" className="editLName" onChange={this.handleName}/>
-                            <input name="title" placeholder="Job Title"type="text" className="editTitle" onChange={this.handleInput}/>
+                            <input name="fname" placeholder="First Name" type="text" className="editFName" onChange={this.handleName}/>
+                            <input name="lname" placeholder="Last Name" type="text" className="editLName" onChange={this.handleName}/>
+                            <input name="title" placeholder="Job Title" type="text" className="editTitle" onChange={this.handleInput}/>
                             {/* <label htmlFor="editImg">
                                 Photo
                                 <input name="photo" type="file" className="editImage" id="editImg"/>
@@ -174,11 +231,11 @@ export default class Edit extends React.Component {
                         <div className="editEdu">
                             Education
                             <input onChange={this.handleChangeEducation} name="university" placeholder="University" type="text" className="editUni" />
-                            <input onChange={this.handleChangeEducation} name="city" placeholder="City" type="text" className="editEduCity" />
+                            <input onChange={this.handleChangeEducation} name="cityEdu" placeholder="City" type="text" className="editEduCity" />
                             <input onChange={this.handleChangeEducation} name="degree" placeholder="Degree" type="text" className="editEduDegree" />
                             <input onChange={this.handleChangeEducation} name="subject" placeholder="Subject" type="text" className="editEduSubject" />
-                            <input onChange={this.handleChangeEducation} name="from" placeholder="From" type="text" className="editEduFrom" />
-                            <input onChange={this.handleChangeEducation} name="to" placeholder="To" type="text" className="editEduTo" />
+                            <input onChange={this.handleChangeEducation} name="fromEdu" placeholder="From" type="text" className="editEduFrom" />
+                            <input onChange={this.handleChangeEducation} name="toEdu" placeholder="To" type="text" className="editEduTo" />
                             {/* <div className="editBtns">
                                 <button className='editEduDelete'>Delete</button>
                                 <button className="editEduAdd">Add</button>

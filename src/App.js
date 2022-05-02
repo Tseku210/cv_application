@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './components/Header'
 import './styles/App.css'
 import Edit from './components/Edit'
-import Prototype from './components/Prototype'
+import Main from './components/Main'
 
 class App extends React.Component {
 
@@ -11,6 +11,7 @@ class App extends React.Component {
       <div id="main">
         <Header />
         <div id="body">
+          {/* <Main /> */}
           <Edit />
           {/* <Prototype /> */}
         </div>
